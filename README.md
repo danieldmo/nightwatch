@@ -22,10 +22,20 @@ $ npm install
 ```
 
 ### Run tests
-The tests for nightwatch are written using [nodeunit](https://github.com/caolan/nodeunit) as the test framework. To run the nodeunit tests do:
+The tests for Nightwatch are written using [Mocha](http://mochajs.org/) exports interface but they can also be run with Nightwatch itself.
+
+To run the unit tests using mocha, do:
+
 ```sh
 $ npm test
 ```
+
+To run the unit tests using Nightwatch, do:
+
+```sh
+$ npm run unit-tests
+```
+
 
 ### Discuss
 The [Mailing List/Google Group](https://groups.google.com/forum/#!forum/nightwatchjs) is the most appropriate tool for Nightwatch related discussions. In addition, there is a [StackOverflow Nightwatch.js tag](http://stackoverflow.com/questions/tagged/nightwatch.js) at your disposal and [Twitter](https://twitter.com/nightwatchjs).
@@ -33,3 +43,37 @@ The [Mailing List/Google Group](https://groups.google.com/forum/#!forum/nightwat
 ### Setup Guides
 Browser specific setup and usage guides along with debugging instructions can be found on the [**Wiki**](https://github.com/nightwatchjs/nightwatch/wiki).
 
+### To use webdriver directly
+
+If you want to use webdriver directly, instead of via proxy commands goes though selenium server
+
+
+1. start chrome driver manually
+2. 
+
+`webdriver_only: true` to options and `path_prefix: ''`, and change port to `9515` in your setting.
+
+e.g.
+
+
+```
+{
+  'custom_commands_path': 'commands',
+  'globals_path': 'support/globals',
+  ...
+  'webdriver_only': true,
+
+  'test_settings': {
+    'default': {
+       ...
+      'selenium_port': 9515,
+      'selenium_host': seleniumHost,
+      'path_prefix': ''
+      },
+      'desiredCapabilities': {
+        ...
+      }
+    }
+  }
+}
+```
